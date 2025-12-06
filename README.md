@@ -308,6 +308,8 @@ Most people will say things like:
 -It's so verbose, just infer it  
 -Just use an IDE and hover  
 
+Writing the type is verbose but writing lifetimes isn't?  
+
 I code for my future self. When I haven't seen a project in 6 months and can't remember anything,  
 what do you think I would prefer to see:
 1. Cryptic short names and inferred types  
