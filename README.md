@@ -374,3 +374,21 @@ It's the most readable style possible. Nothing is hidden, everything is in logic
 You don't need to through through mountains of Russian dolls to find the actual code.  
 You also know exactly what your code is doing and don't hide allocations and looping inside function-call-ception.  
 
+<b>Why did you call all lifetime names: 'lifetimes_suck?</b>
+
+Because they do suck. They are completely pointless in practice.  
+They make code so hard to read:
+```rust
+fn apply<'a>(x: &'a str, y: &'a str, f: impl Fn(&'a str, &'a str) -> &'a str) -> &'a str {
+    f(x, y)
+}
+```
+This just reminds me of std:: spam in cpp.  
+```cpp
+std::map<std::string, std::vector<std::pair<std::string, std::int32_t>>> processData(const std::vector<std::string>& input_keys, const std::unordered_map<std::string, std::vector<int>>& lookup);
+```
+Well maybe not quite as bad as that.  
+My main problem with lifetimes is they don't actually increase safety.  
+The borrow checker will still detect use after frees anyway.  
+So are you forced to tag lifetimes on references?  
+It's mostly to satisfy the compiler and nothing else.  
