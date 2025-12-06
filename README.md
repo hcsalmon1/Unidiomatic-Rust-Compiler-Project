@@ -13,7 +13,7 @@ Rules:
 
 <b>Are you trolling?</b>
 
-Yes. But honestly if someone forced me to write code in Rust, I would probably write it this way.  
+    Yes. But honestly if someone forced me to write code in Rust, I would probably write it this way.  
 
 <b>Why No Tagged Unions?</b>
 
