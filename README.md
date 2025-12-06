@@ -84,7 +84,7 @@ You have to tell the compiler what it is EVERY TIME.
 You did this like so:  
 ```rust
 #[repr(i32)]
-#[Derive(Debug, PartialEq, Eq)]
+#[derive(Debug, PartialEq, Eq)]
 enum ParseError {
     None,
     CodeLengthIsZero,
