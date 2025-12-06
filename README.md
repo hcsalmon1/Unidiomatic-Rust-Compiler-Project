@@ -351,6 +351,7 @@ fn print_employees_over_50_proc(employees:&Vec<Employee>) {
 
     let employees_over_50:Vec<&Employee> = get_employee_over_age(employees, 50);
     let sorted_employees_over_50:Vec<&Employee> = sort_employees_by_age(&employees_over_50);
+
     for employee in sorted_employees_over_50 {
         println!("{} - {} years old", employee.name, employee.age());
     }
