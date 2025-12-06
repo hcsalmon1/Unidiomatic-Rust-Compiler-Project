@@ -1,6 +1,4 @@
 # Unidiomatic-Rust-Compiler-Project
-Writing Rust with no tagged unions, no iterators, limited traits, real enums that are just namespaced integers and no inferred types
-
 I have a programming style that is the opposite of Rust's, let's see how incompitable they are.
 
 Rules:
@@ -14,7 +12,7 @@ Rules:
 Rust doesn't have enums, instead they have tagged unions. Types that can carry anything in each element.
 Here are 5 structs, normal for usual AST compilers:
 
-<pre>```rust
+```rust
 pub struct FunctionDecl {
     pub name: String,
     pub params: Vec<String>,
@@ -39,12 +37,11 @@ pub struct Print {
 pub struct Reassignment {
     pub name: String,
     pub value: AstNode,
-} ```
-</pre>
+}
+```
 
 Then you would put them in a tagged union:
-
-<pre>
+```rust
 pub enum AstNode {
     FunctionDecl(FunctionDecl),
     IfStatement(IfStatement),
@@ -52,13 +49,13 @@ pub enum AstNode {
     Print(Print),
     Reassignment(Reassignment),
 }
-</pre>
+```
 
 For some weird reason, Rust called these things 'enums'.
 No other language would refer to these things as that. They are tagged unions.
 You can force a tagged union into pretending to be an enum.
 You did this like so:
-
+```rust
 enum ParseError {
     None,
     CodeLengthIsZero,
@@ -66,15 +63,19 @@ enum ParseError {
     UnexpectedValue,
     UnterminatedChar,
 }
-
+```
 The problem with this is that it's completely useless to me.
-
+```rust
 let parse_error:ParseError = ParseError::None;
 ...
 if parse_error != ParseError::None {  //error
 ...
+```
+This will give you a compile error:
 
-an enum should just be integers. Why can't you compare integers?
+    binary operator '!=' cannot be applied to ParseError
+
+An enum should just be integers. Why can't you compare integers?
 This is because it's not an enum, it's a tagged union, so could have any type.
 You have to tell the compiler what it is EVERY TIME.
 You did this like so:
