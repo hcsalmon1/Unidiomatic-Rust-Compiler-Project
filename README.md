@@ -14,7 +14,7 @@ Rules:
 Rust doesn't have enums, instead they have tagged unions. Types that can carry anything in each element.
 Here are 5 structs, normal for usual AST compilers:
 
-<pre> ```rust
+<pre>```rust
 pub struct FunctionDecl {
     pub name: String,
     pub params: Vec<String>,
