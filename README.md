@@ -304,16 +304,16 @@ They are the worst modern trend in programming.
 6. It means you understand less of the language because you never learn the actual types
 
 Most people will say things like:
--It's so verbose, just infer it
--Just use an IDE and hover
+-It's so verbose, just infer it  
+-Just use an IDE and hover  
 
 I code for my future self. When I haven't seen a project in 6 months and can't remember anything,  
 what do you think I would prefer to see:
-1. Cryptic short names and inferred types
-   or
-2. Detailed names with explicit types
+1. Cryptic short names and inferred types  
+   or  
+2. Detailed names with explicit types  
 
-People will also say: But it's idiomatic.
+People will also say: But it's idiomatic.  
 
 Do you think I care about that?  
 That's just an argument from majority or popularity, a logical fallacy for a reason.  
