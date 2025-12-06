@@ -242,7 +242,7 @@ pub fn parse_error_to_string(error: i32) -> &'static str {
 Then I copy and paste it into my project and I have proper enums without derive spam.  
 
 I do think tagged unions are useful, if you actually want to use them for a task.  
-When I just want status codes, why would I need them? And am I forced to write derive spam to make them usable?  
+When I just want status codes, why would I need them? And why am I forced to write derive spam to make them usable?  
 
 <b>__Why no iterators?__</b>
 
