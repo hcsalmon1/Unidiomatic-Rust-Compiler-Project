@@ -11,11 +11,11 @@ Rules:
 
 <b>Questions and Answers:</b>
 
-<b>Are you trolling?</b>
+<b>1. Are you trolling?</b>
 
-    Yes. But honestly if someone forced me to write code in Rust, I would probably write it this way.  
+Yes. But honestly if someone forced me to write code in Rust, I would probably write it this way.  
 
-<b>Why No Tagged Unions?</b>
+<b>2. Why No Tagged Unions?</b>
 
 Rust doesn't have enums, instead they have tagged unions. Types that can carry anything in each element.  
 Here are 5 structs, normal for usual AST compilers:  
@@ -238,6 +238,9 @@ pub fn parse_error_to_string(error: i32) -> &'static str {
 ```
 Then I copy and paste it into my project and I have proper enums without derive spam.  
 
+I do thing tagged unions are useful if you actually want to use them for a task.  
+When I just want status codes, why would I need them?  
+
 <b>Why no iterators?</b>
 
 This project is not suited at all to using them, even though they are everywhere in Rust.  
@@ -249,7 +252,9 @@ The parsing logic:
     Loop until you find the end that type and add it to the list  
 -In the initial loop, skip the characters just added in the inner loop  
 
-The entire parsing logic would be extremely difficult
+The entire parsing logic would be extremely difficult with iterators.  
+You'd need an iterator inside an iterator and skip the unwanted characters.  
+Massive nightmare.  
 
 I'm not against the idea of iterators, I just want the option to choose.  
 Zig gives you that option.
@@ -272,7 +277,7 @@ Rust makes this very difficult to do with certain types.
 It's like they don't trust you to ever access the index of something directly.  
 The thing is, in the above example I am looping against the length of the ArrayList and never mutate it, how get it go out of bounds?  
 
-Iterators are great when you only need to loop through a collection in order but they are extremely cumbersome if you need to any advances iteration.  
+Iterators are great when you only need to loop through a collection in order, but they are extremely cumbersome if you need to do any advanced iteration.  
 What if you want to go back to the start of the loop if you meet a certain condition? Good luck doing that with a Rust iterator.  
 
 Another reason I don't like them, is I don't like inferred types. It's impossible to use iterators without inferred types in Rust.  
@@ -285,4 +290,69 @@ for token in tokens {
 ```
 
 <b> Why no inferred types?</b>
+
+They are the worst modern trend in programming.  
+1. They are lazy
+2. They make your code less readable
+3. They force you to use an IDE and hover constantly
+4. Makes code on Github horrible to read
+5. It will take you longer to understand your old code because you have no context
+6. It means you understand less of the language because you never learn the actual types
+
+Most people will say things like:
+-It's so verbose, just infer it
+-Just use an IDE and hover
+
+I code for my future self. When I haven't seen a project in 6 months and can't remember anything,  
+what do you think I would prefer to see:
+1. Cryptic short names and inferred types
+   or
+2. Detailed names with explicit types
+
+People will also say: But it's idiomatic.
+
+Do you think I care about that?  
+That's just an argument from majority or popularity, a logical fallacy for a reason.  
+
+From my experience, I understand my code way faster when I write good names and always write the type.  
+
+<b> Why no function call chains?</b>
+
+I really shouldn't need to explain this one.  
+Why is this considered good?  
+
+Standard Rust looks like:  
+
+```Rust
+fn print_employees_over_50(employees:&Vec<Employee>) {
+
+    let mut over_50: Vec<&Employee> = employees
+        .iter()
+        .filter(|e| e.age() > 50)
+        .collect();
+
+    over_50.sort_by_key(|e| -(e.age()));
+
+    println!("Employees over 50 (oldest first):");
+    for e in over_50 {
+        println!("{} - {} years old", e.name, e.age());
+    }
+}
+```
+This will create a load of hidden types, have hidden iterations, have hidden allocations etc.  
+It's like a black box of function calls. C# does this with LINQ too and I hate it there as well.  
+I would just create reusable functions and write this:  
+```Rust
+fn print_employees_over_50_proc(employees:&Vec<Employee>) {
+
+    let employees_over_50:Vec<&Employee> = get_employee_over_age(employees, 50);
+    let sorted_employees_over_50:Vec<&Employee> = sort_employees_by_age(&employees_over_50);
+    for employee in sorted_employees_over_50 {
+        println!("{} - {} years old", employee.name, employee.age());
+    }
+}
+```
+This is just a style I despise. I want one instruction per line, not about 5 with hidden iterators.  
+Also, look at my Rust in this project. Have you seen more readable Rust code in your life?  
+
 
