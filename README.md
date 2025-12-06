@@ -11,6 +11,10 @@ Rules:
 
 <b>Questions and Answers:</b>
 
+<b>Are you trolling?</b>
+
+Yes. But honestly if someone forced me to write code in Rust, I would probably write it this way.  
+
 <b>Why No Tagged Unions?</b>
 
 Rust doesn't have enums, instead they have tagged unions. Types that can carry anything in each element.  
@@ -233,3 +237,52 @@ pub fn parse_error_to_string(error: i32) -> &'static str {
 }
 ```
 Then I copy and paste it into my project and I have proper enums without derive spam.  
+
+<b>Why no iterators?</b>
+
+This project is not suited at all to using them, even though they are everywhere in Rust.  
+The parsing section alone is not suited to iterators at all.  
+
+The parsing logic:  
+-Loop through each character  
+-If you find a letter that could be part of type  
+    Loop until you find the end that type and add it to the list  
+-In the initial loop, skip the characters just added in the inner loop  
+
+The entire parsing logic would be extremely difficult
+
+I'm not against the idea of iterators, I just want the option to choose.  
+Zig gives you that option.
+```zig
+const list:ArrayList<i32> = getArrayList();
+for (list) |element| { //automates an iterator in the background
+    print("Element: {}\n", .{element});
+}
+```
+vs
+```zig
+const list:ArrayList<i32> = getArrayList();
+const list_count:usize = list.items.len;
+for (0..list_count) |i| {
+    const element:i32 = list.items[i];
+    print("Element: {}\n", .{element});
+}
+```
+Rust makes this very difficult to do with certain types.  
+It's like they don't trust you to ever access the index of something directly.  
+The thing is, in the above example I am looping against the length of the ArrayList and never mutate it, how get it go out of bounds?  
+
+Iterators are great when you only need to loop through a collection in order but they are extremely cumbersome if you need to any advances iteration.  
+What if you want to go back to the start of the loop if you meet a certain condition? Good luck doing that with a Rust iterator.  
+
+Another reason I don't like them, is I don't like inferred types. It's impossible to use iterators without inferred types in Rust.  
+The only way is to shadow, like this:  
+
+```rust
+for token in tokens {
+   let token:Token = token;
+}
+```
+
+<b> Why no inferred types?</b>
+
