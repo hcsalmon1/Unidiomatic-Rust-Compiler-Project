@@ -54,10 +54,10 @@ pub enum AstNode {
     Reassignment(Reassignment),
 }
 ```
-For some weird reason, Rust called these things 'enums'.
-No other language would refer to these things as that. They are tagged unions.
-You can force a tagged union into pretending to be an enum.
-You do this like so:
+For some weird reason, Rust called these things 'enums'.  
+No other language would refer to these things as that. They are tagged unions.  
+You can force a tagged union into pretending to be an enum.  
+You do this like so:  
 ```rust
 enum ParseError {
     None,
@@ -67,22 +67,22 @@ enum ParseError {
     UnterminatedChar,
 }
 ```
-The problem with this is that it's completely useless to me.
+The problem with this is that it's completely useless to me.  
 ```rust
 let parse_error:ParseError = ParseError::None;
 ...
 if parse_error != ParseError::None {  //error
 ...
 ```
-This will give you a compile error:
+This will give you a compile error:  
 
     binary operator '!=' cannot be applied to ParseError
 
-An enum should just be integers. Why can't you compare integers?
-This is because it's not an enum, it's a tagged union, so could have any type.
-You have to tell the compiler what it is EVERY TIME.
-You did this like so:
-<pre>
+An enum should just be integers. Why can't you compare integers?  
+This is because it's not an enum, it's a tagged union, so could have any type.  
+You have to tell the compiler what it is EVERY TIME.  
+You did this like so:  
+```rust
 #[repr(i32)]
 #[Derive(Debug, PartialEq, Eq)]
 enum ParseError {
@@ -92,14 +92,13 @@ enum ParseError {
     UnexpectedValue,
     UnterminatedChar,
 }
-</pre>
+```
 This tells the compiler:
 -It represent i32 values
 -Write a function to print the names
 -Write a function to compare the values
 This is exactly the same as doing this though:
-
-<pre>
+```rust
 enum ParseError {
     None(i32),
     CodeLengthIsZero(i32),
@@ -107,14 +106,14 @@ enum ParseError {
     UnexpectedValue(i32),
     UnterminatedChar(i32),
 }
-</pre>
+```
 There are tagged unions where the nested type is an i32.
 What's my problem with this?
 90% of the time I don't want a tagged union, I want namespaced names constants to integers, i.e. actual enums.
 Rust gives me a type that could hold anything in each element, when all I want is integers.
 
 I don't want that and to get what I want, I have to spam #derive above every definition:
-<pre>
+```zig
 Zig:
 const Color = enum {
     Red,
@@ -151,7 +150,8 @@ const InputAction = enum {
     Attack,
     Pause,
 };
-
+```
+```rust
 Rust:
 #[repr(i32)]
 #[derive(Debug, PartialEq, Eq)]
@@ -194,6 +194,6 @@ enum InputAction {
     Attack,
     Pause,
 };
-</pre>
-This definitely isn't a fundamental design flaw. No, not at all.
-Writing all of this boilerplate is a feature.
+```
+This definitely isn't a fundamental design flaw. No, not at all.  
+Writing all of this boilerplate is a feature.  
