@@ -2,12 +2,12 @@
 I have a programming style that is the opposite of Rust's, let's see how incompitable they are.
 
 Rules:
--No tagged unions, real enums
--No iterators if possible
--No traits if possible
--No function call chains
--No inferred types
--Procedural code
+-No tagged unions, real enums  
+-No iterators if possible  
+-No traits if possible  
+-No function call chains  
+-No inferred types  
+-Procedural code  
 
 Rust doesn't have enums, instead they have tagged unions. Types that can carry anything in each element.
 Here are 5 structs, normal for usual AST compilers:
