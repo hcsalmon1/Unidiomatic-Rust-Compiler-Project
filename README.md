@@ -199,7 +199,7 @@ enum InputAction {
     Pause,
 };
 ```
-Zig gives me what I want. You can compare and print innately.  
+Zig gives me what I want by default. You can compare and print them innately.  
 Rust requires this derive spam to force a tagged union into integers.  
 
 This definitely isn't a fundamental design flaw. No, not at all.  
