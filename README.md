@@ -250,10 +250,11 @@ This project is not suited at all to using them, even though they are everywhere
 The parsing section alone is not suited to iterators at all.  
 
 The parsing logic:  
--Loop through each character  
--If you find a letter that could be part of type  
-    Loop until you find the end that type and add it to the list  
--In the initial loop, skip the characters just added in the inner loop  
+
+    -Loop through each character  
+    -If you find a letter that could be part of type  
+        Loop until you find the end that type and add it to the list  
+    -In the initial loop, skip the characters just added in the inner loop  
 
 The entire parsing logic would be extremely difficult with iterators.  
 You'd need an iterator inside an iterator and skip the unwanted characters.  
@@ -278,12 +279,12 @@ for (0..list_count) |i| {
 ```
 Rust makes this very difficult to do with certain types.  
 It's like they don't trust you to ever access the index of something directly.  
-The thing is, in the above example I am looping against the length of the ArrayList and never mutate it, how get it go out of bounds?  
+The thing is, in the above example I am looping against the length of the ArrayList and never mutate it, how can it go out of bounds?  
 
 Iterators are great when you only need to loop through a collection in order, but they are extremely cumbersome if you need to do any advanced iteration.  
 What if you want to go back to the start of the loop if you meet a certain condition? Good luck doing that with a Rust iterator.  
 
-Another reason I don't like them, is I don't like inferred types. It's impossible to use iterators without inferred types in Rust.  
+Another reason I don't like them is: I don't like inferred types. It's impossible to use iterators without inferred types in Rust.  
 The only way is to shadow, like this:  
 
 ```rust
