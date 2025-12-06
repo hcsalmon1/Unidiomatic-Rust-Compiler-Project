@@ -9,8 +9,12 @@ Rules:
 -No inferred types  
 -Procedural code  
 
-Rust doesn't have enums, instead they have tagged unions. Types that can carry anything in each element.
-Here are 5 structs, normal for usual AST compilers:
+Questions and Answers:
+
+<b>Why No Tagged Unions</b>
+
+Rust doesn't have enums, instead they have tagged unions. Types that can carry anything in each element.  
+Here are 5 structs, normal for usual AST compilers:  
 
 ```rust
 pub struct FunctionDecl {
@@ -50,11 +54,10 @@ pub enum AstNode {
     Reassignment(Reassignment),
 }
 ```
-
 For some weird reason, Rust called these things 'enums'.
 No other language would refer to these things as that. They are tagged unions.
 You can force a tagged union into pretending to be an enum.
-You did this like so:
+You do this like so:
 ```rust
 enum ParseError {
     None,
