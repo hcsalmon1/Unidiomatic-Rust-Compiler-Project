@@ -368,9 +368,9 @@ Also, look at my Rust in this project. Have you seen more readable Rust code in 
 These are just like interfaces and I never use them in my projects.  
 I didn't write them in the original project and they don't exist in Zig, so why would I use them here?  
 
-I was forced to use them in some places because wouldn't shut up if I didn't.  
+I was forced to use them in some places because the compiler wouldn't shut up if I didn't.  
 
-<b>Why Procedular</b>
+<b>Why Procedularal?</b>
 
 It's the most readable style possible. Nothing is hidden, everything is in logical order.  
 You don't need to through through mountains of Russian dolls to find the actual code.  
