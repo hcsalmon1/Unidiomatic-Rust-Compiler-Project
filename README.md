@@ -34,7 +34,7 @@ fn convert_code(code:&String) {
     let mut convert_error:i32 = ConvertError::None;
     let code:String = convert::go_convert::convert(&ast_nodes, code, &mut convert_error);
     if convert_error != ConvertError::None {
-        println!("Error: {}", errors::ast_error_to_string(convert_error));
+        println!("Error: {}", errors::convert_error_to_string(convert_error));
         debugging::print_tokens(&tokens);
         debugging::print_ast_nodes(&ast_nodes);
         return;
