@@ -93,11 +93,11 @@ enum ParseError {
     UnterminatedChar,
 }
 ```
-This tells the compiler:
--It represent i32 values
--Write a function to print the names
--Write a function to compare the values
-This is exactly the same as doing this though:
+This tells the compiler:  
+-It represent i32 values  
+-Write a function to print the names  
+-Write a function to compare the values  
+This is exactly the same as doing this though:  
 ```rust
 enum ParseError {
     None(i32),
@@ -107,12 +107,12 @@ enum ParseError {
     UnterminatedChar(i32),
 }
 ```
-There are tagged unions where the nested type is an i32.
-What's my problem with this?
-90% of the time I don't want a tagged union, I want namespaced names constants to integers, i.e. actual enums.
-Rust gives me a type that could hold anything in each element, when all I want is integers.
+There are tagged unions where the nested type is an i32.  
+What's my problem with this?  
+90% of the time I don't want a tagged union, I want namespaced names constants to integers, i.e. actual enums.  
+Rust gives me a type that could hold anything in each element, when all I want is integers.  
 
-I don't want that and to get what I want, I have to spam #derive above every definition:
+I don't want that and to get what I want, I have to spam #derive above every definition:  
 ```zig
 Zig:
 const Color = enum {
@@ -197,3 +197,39 @@ enum InputAction {
 ```
 This definitely isn't a fundamental design flaw. No, not at all.  
 Writing all of this boilerplate is a feature.  
+
+In this project I banned this type completely. The original code was in Zig and C# and had no tagged unions.  
+To create my own namespaced named constants to integers, I used structs and created a gui to generate them for me:  
+
+This:  
+```
+enum ParseError {
+    None,
+    Code_Length_Is_Zero,
+    Unterminated_String,
+    Unexpected_Value,
+    Unterminated_Char,
+}
+```
+Autogenerates this for me with the gui tool:  
+```
+pub struct ParseError;
+impl ParseError {
+    pub const None:i32 = 0;
+    pub const Code_Length_Is_Zero: i32 = 1;
+    pub const Unterminated_String: i32 = 2;
+    pub const Unexpected_Value: i32 = 3;
+    pub const Unterminated_Char: i32 = 4;
+}
+
+pub fn parse_error_to_string(error: i32) -> &'static str {
+    match error {
+        ParseError::Code_Length_Is_Zero => "Code_Length_Is_Zero",
+        ParseError::Unterminated_String => "Unterminated_String",
+        ParseError::Unexpected_Value => "Unexpected_Value",
+        ParseError::Unterminated_Char => "Unterminated_Char",
+        _ => "Unknown",
+    }
+}
+```
+Then I copy and paste it into my project and I have proper enums without derive spam.  
