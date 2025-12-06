@@ -428,7 +428,8 @@ This just reminds me of std:: spam in cpp.
 std::map<std::string, std::vector<std::pair<std::string, std::int32_t>>> processData(const std::vector<std::string>& input_keys, const std::unordered_map<std::string, std::vector<int>>& lookup);
 ```
 Well maybe not quite as bad as that.  
+
 My main problem with lifetimes is they don't actually increase safety.  
 The borrow checker will still detect use after frees anyway.  
-So are you forced to tag lifetimes on references?  
+So why are you forced to tag lifetimes on references?  
 It's mostly to satisfy the compiler and nothing else.  
