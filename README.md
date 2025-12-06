@@ -263,14 +263,14 @@ Massive nightmare.
 I'm not against the idea of iterators, I just want the option to choose.  
 Zig gives you that option.
 ```zig
-const list:ArrayList<i32> = getArrayList();
+const list:ArrayList(i32) = getArrayList();
 for (list) |element| { //automates an iterator in the background
     print("Element: {}\n", .{element});
 }
 ```
 vs
 ```zig
-const list:ArrayList<i32> = getArrayList();
+const list:ArrayList(i32) = getArrayList();
 const list_count:usize = list.items.len;
 for (0..list_count) |i| {
     const element:i32 = list.items[i];
