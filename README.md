@@ -199,6 +199,9 @@ enum InputAction {
     Pause,
 };
 ```
+Zig gives me what I want. You can compare and print innately.  
+Rust requires this derive spam to force a tagged union into integers.  
+
 This definitely isn't a fundamental design flaw. No, not at all.  
 Writing all of this boilerplate is a feature.  
 
