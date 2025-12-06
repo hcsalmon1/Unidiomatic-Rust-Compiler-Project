@@ -411,7 +411,7 @@ I was forced to use them in some places because the compiler wouldn't shut up if
 <b>Why Procedural?</b>
 
 It's the most readable style possible. Nothing is hidden, everything is in logical order.  
-You don't need to through through mountains of Russian dolls to find the actual code.  
+You don't need to look through mountains of Russian dolls to find the actual code.  
 You also know exactly what your code is doing and don't hide allocations and looping inside function-call-ception.  
 
 <b>Why did you call all lifetime names: 'lifetimes_suck?</b>
