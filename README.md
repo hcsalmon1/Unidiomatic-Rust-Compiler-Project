@@ -1,7 +1,7 @@
 # Unidiomatic-Rust-Compiler-Project
 I have a programming style that is the opposite of Rust's, let's see how incompitable they are.
 
-Rules:
+Rules:  
 -No tagged unions, real enums  
 -No iterators if possible  
 -No traits if possible  
