@@ -246,7 +246,8 @@ When I just want status codes, why would I need them? And why am I forced to wri
 
 <b>__Why no iterators?__</b>
 
-This project is not suited at all to using them, even though they are everywhere in Rust.  
+I'm sick of people telling me to use them over index based loops.  
+Plus this project is not suited at all to using them, even though they are everywhere in Rust.  
 The parsing section alone is not suited to iterators at all.  
 
 The parsing logic:  
