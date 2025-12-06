@@ -304,7 +304,7 @@ They are the worst modern trend in programming.
 5. It will take you longer to understand your old code because you have no context
 6. It means you understand less of the language because you never learn the actual types
 
-Most people will say things like:
+Most people will say things like:  
 -It's so verbose, just infer it  
 -Just use an IDE and hover  
 
