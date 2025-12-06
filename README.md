@@ -9,9 +9,9 @@ Rules:
 -No inferred types  
 -Procedural code  
 
-Questions and Answers:
+<b>Questions and Answers:</b>
 
-<b>Why No Tagged Unions</b>
+<b>Why No Tagged Unions?</b>
 
 Rust doesn't have enums, instead they have tagged unions. Types that can carry anything in each element.  
 Here are 5 structs, normal for usual AST compilers:  
