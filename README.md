@@ -202,7 +202,7 @@ In this project I banned this type completely. The original code was in Zig and 
 To create my own namespaced named constants to integers, I used structs and created a gui to generate them for me:  
 
 This:  
-```
+```rust
 enum ParseError {
     None,
     Code_Length_Is_Zero,
@@ -212,7 +212,7 @@ enum ParseError {
 }
 ```
 Autogenerates this for me with the gui tool:  
-```
+```rust
 pub struct ParseError;
 impl ParseError {
     pub const None:i32 = 0;
