@@ -9,13 +9,13 @@ Rules:
 -No inferred types  
 -Procedural code  
 
-<b>Questions and Answers:</b>
+<b>__Questions and Answers:__</b>
 
-<b>1. Are you trolling?</b>
+<b>__Are you trolling?__</b>
 
 Yes. But honestly if someone forced me to write code in Rust, I would probably write it this way.  
 
-<b>2. Why No Tagged Unions?</b>
+<b>__Why No Tagged Unions?__</b>
 
 Rust doesn't have enums, instead they have tagged unions. Types that can carry anything in each element.  
 Here are 5 structs, normal for usual AST compilers:  
@@ -241,7 +241,7 @@ Then I copy and paste it into my project and I have proper enums without derive 
 I do think tagged unions are useful, if you actually want to use them for a task.  
 When I just want status codes, why would I need them? And am I forced to write derive spam to make them usable?  
 
-<b>Why no iterators?</b>
+<b>__Why no iterators?__</b>
 
 This project is not suited at all to using them, even though they are everywhere in Rust.  
 The parsing section alone is not suited to iterators at all.  
@@ -289,7 +289,7 @@ for token in tokens {
 }
 ```
 
-<b> Why no inferred types?</b>
+<b>__Why no inferred types?__</b>
 
 They are the worst modern trend in programming.  
 1. They are lazy
@@ -316,7 +316,7 @@ That's just an argument from majority or popularity, a logical fallacy for a rea
 
 From my experience, I understand my code way faster when I write good names and always write the type.  
 
-<b> Why no function call chains?</b>
+<b>__Why no function call chains?__</b>
 
 I really shouldn't need to explain this one.  
 Why is this considered good?  
