@@ -55,6 +55,8 @@ Yes. But honestly if someone forced me to write code in Rust, I would probably w
 
 <b>__Why No Tagged Unions?__</b>
 
+Rust conflates enums and tagged unions. I don’t want sum types; I want integer enums. Rust forces derives and repr spam just to get something other languages give by default.
+
 Rust doesn't have enums, instead they have tagged unions. Types that can carry anything in each element.  
 Here are 5 structs, normal for usual AST compilers:  
 
