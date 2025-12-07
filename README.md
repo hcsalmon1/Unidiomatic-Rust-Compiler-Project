@@ -172,28 +172,6 @@ const Direction = enum {
     West,
 };
 
-const FileError = enum {
-    NotFound,
-    PermissionDenied,
-    Corrupted,
-};
-
-const LogLevel = enum {
-    Trace,
-    Debug,
-    Info,
-    Warn,
-    Error,
-    Fatal,
-};
-
-const InputAction = enum {
-    MoveLeft,
-    MoveRight,
-    Jump,
-    Attack,
-    Pause,
-};
 ```
 ```rust
 Rust:
@@ -212,32 +190,6 @@ enum Direction {
     East,
     West,
 }
-#[repr(i32)]
-#[derive(Debug, PartialEq, Eq)]
-enum FileError {
-    NotFound,
-    PermissionDenied,
-    Corrupted,
-}
-#[repr(i32)]
-#[derive(Debug, PartialEq, Eq)]
-enum LogLevel {
-    Trace,
-    Debug,
-    Info,
-    Warn,
-    Error,
-    Fatal,
-};
-#[repr(i32)]
-#[derive(Debug, PartialEq, Eq)]
-enum InputAction {
-    MoveLeft,
-    MoveRight,
-    Jump,
-    Attack,
-    Pause,
-};
 ```
 Zig gives me what I want by default. You can compare and print them innately.  
 Rust requires this derive spam to force a tagged union into integers.  
