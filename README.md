@@ -277,7 +277,7 @@ enum ParseError {
     UnterminatedChar(i32),
 }
 ```
-There are tagged unions where the nested type is an i32.  
+These are tagged unions where the nested type is an i32.  
 What's my problem with this?  
 90% of the time I don't want a tagged union, I want namespaced names constants to integers, i.e. actual enums.  
 Rust gives me a type that could hold anything in each element, when all I want is integers.  
