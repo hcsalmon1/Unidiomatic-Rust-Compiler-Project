@@ -370,7 +370,7 @@ You also know exactly what your code is doing and don't hide allocations and loo
 
 <b>Why did you call all lifetime names: 'lifetimes_suck?</b>
 
-Because they do suck. They are completely pointless in practice.  
+Because they do suck. They are just boilerplate.  
 They make code so hard to read:
 ```rust
 fn apply<'a>(x: &'a str, y: &'a str, f: impl Fn(&'a str, &'a str) -> &'a str) -> &'a str {
@@ -385,5 +385,7 @@ Well maybe not quite as bad as that.
 
 My main problem with lifetimes is they don't actually increase safety.  
 The borrow checker will still detect use after frees anyway.  
-So why are you forced to tag lifetimes on references?  
-It's mostly to satisfy the compiler and nothing else.  
+They are simply there to satisfy the type system but add very minimal safety benefits.  
+
+I like being explicit in what types things are because that is important information to me.  
+I don't like being explicit in specifying that two references will still exist within a function, this should be obvious.  
