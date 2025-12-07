@@ -63,7 +63,7 @@ The parsing logic:
 
     -Loop through each character  
     -If you find a letter that could be part of type  
-        Loop until you find the end that type and add it to the list  
+        Loop until you find the end of that type and add it to the list  
     -In the initial loop, skip the characters just added in the inner loop  
 
 The entire parsing logic would be extremely difficult with iterators.  
